@@ -26,6 +26,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
   gem 'eslint-rails', '~> 0.1.1'
+  gem 'annotate'
 end
 
 group :test do
