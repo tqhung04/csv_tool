@@ -6,7 +6,10 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Type</th>
+      <th>ValueBefore</th>
+      <th>CompareOpeartor</th>
+      <th>CompareValue</th>
+      <th>ValueAfter</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,10 +18,13 @@
     <% @csv_filters.each do |csv_filter| %>
       <tr>
         <td><%= csv_filter.name %></td>
-        <td><%= csv_filter.type %></td>
-        <td><%= link_to 'Show', csv_filter %></td>
-        <td><%= link_to 'Edit', edit_csv_filter_path(csv_filter) %></td>
-        <td><%= link_to 'Destroy', csv_filter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= csv_filter.before_value %></td>
+        <td><%= csv_filter.csv_operator&.name %></td>
+        <td><%= csv_filter.compare_value %></td>
+        <td><%= csv_filter.after_value %></td>
+        <td><%= link_to 'Show', project_csv_type_csv_attribute_csv_filters_path %></td>
+        <td><%= link_to 'Edit', edit_project_csv_type_csv_attribute_path(csv_filter.csv_attribute.csv_type.project, csv_filter.csv_attribute.csv_type, csv_filter.csv_attribute, csv_filter) %></td>
+        <td><%= link_to 'Destroy', project_csv_type_csv_attribute_path(csv_filter.csv_attribute.csv_type.project, csv_filter.csv_attribute.csv_type, csv_filter.csv_attribute, csv_filter), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Csv Filter', new_csv_filter_path %>
+<%= link_to 'New Csv Filter', new_project_csv_type_csv_attribute_csv_filter_path %>

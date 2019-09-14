@@ -4,6 +4,10 @@ class CsvTypesController < ApplicationController
   # GET /csv_types
   # GET /csv_types.json
   def index
+    # @csv_types = if params[:project_id].present?
+    #   project = Project.find_by(id: params[:project_id])
+    #   project.csv_types
+    # else
     @csv_types = CsvType.all
   end
 
@@ -14,7 +18,8 @@ class CsvTypesController < ApplicationController
 
   # GET /csv_types/new
   def new
-    @csv_type = CsvType.new
+    @project = Project.find params[:project_id]
+    @csv_type = CsvType.new(project: @project)
   end
 
   # GET /csv_types/1/edit
@@ -28,7 +33,7 @@ class CsvTypesController < ApplicationController
 
     respond_to do |format|
       if @csv_type.save
-        format.html { redirect_to @csv_type, notice: 'Csv type was successfully created.' }
+        format.html { redirect_to project_csv_types_path(@csv_type.project, @csv_type), notice: 'Csv type was successfully created.' }
         format.json { render :show, status: :created, location: @csv_type }
       else
         format.html { render :new }

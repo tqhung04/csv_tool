@@ -1,4 +1,4 @@
-<%= form_with(model: csv_type, local: true) do |form| %>
+<%= form_for [@project, csv_type], local: true do |form| %>
   <% if csv_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(csv_type.errors.count, "error") %> prohibited this csv_type from being saved:</h2>

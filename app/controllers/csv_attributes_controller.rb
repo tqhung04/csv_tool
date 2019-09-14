@@ -14,7 +14,9 @@ class CsvAttributesController < ApplicationController
 
   # GET /csv_attributes/new
   def new
-    @csv_attribute = CsvAttribute.new
+    @project = Project.find params[:project_id]
+    @csv_type = CsvType.find params[:csv_type_id]
+    @csv_attribute = CsvAttribute.new(csv_type: @csv_type)
   end
 
   # GET /csv_attributes/1/edit
@@ -28,7 +30,8 @@ class CsvAttributesController < ApplicationController
 
     respond_to do |format|
       if @csv_attribute.save
-        format.html { redirect_to @csv_attribute, notice: 'Csv attribute was successfully created.' }
+        format.html { redirect_to project_csv_type_csv_attributes_path(@csv_attribute.csv_type.project, @csv_attribute.csv_type), notice: 'Csv type was successfully created.' }
+
         format.json { render :show, status: :created, location: @csv_attribute }
       else
         format.html { render :new }
@@ -56,7 +59,7 @@ class CsvAttributesController < ApplicationController
   def destroy
     @csv_attribute.destroy
     respond_to do |format|
-      format.html { redirect_to csv_attributes_url, notice: 'Csv attribute was successfully destroyed.' }
+      format.html { redirect_to project_csv_type_csv_attributes_url, notice: 'Csv attribute was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @csv_operator.type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @csv_operator.name %>
+</p>
+
+<%= link_to 'Edit', edit_csv_operator_path(@csv_operator) %> |
+<%= link_to 'Back', csv_operators_path %>

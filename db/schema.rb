@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_053736) do
-
-  create_table "csv_attribute_filters", force: :cascade do |t|
-    t.integer "csv_filter_id", null: false
-    t.integer "csv_attribute_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["csv_attribute_id"], name: "index_csv_attribute_filters_on_csv_attribute_id"
-    t.index ["csv_filter_id"], name: "index_csv_attribute_filters_on_csv_filter_id"
-  end
+ActiveRecord::Schema.define(version: 2019_09_14_071247) do
 
   create_table "csv_attributes", force: :cascade do |t|
     t.string "name", null: false
@@ -32,6 +23,20 @@ ActiveRecord::Schema.define(version: 2019_09_14_053736) do
   create_table "csv_filters", force: :cascade do |t|
     t.string "name", null: false
     t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "csv_operator_id"
+    t.string "before_value"
+    t.string "compare_value"
+    t.string "after_value"
+    t.integer "csv_attribute_id"
+    t.index ["csv_attribute_id"], name: "index_csv_filters_on_csv_attribute_id"
+    t.index ["csv_operator_id"], name: "index_csv_filters_on_csv_operator_id"
+  end
+
+  create_table "csv_operators", force: :cascade do |t|
+    t.integer "kind", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,7 +1,44 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#CsvOperator
+CsvOperator.create(name: 'gt', kind: 1)
+CsvOperator.create(name: 'gte', kind: 2)
+CsvOperator.create(name: 'eq', kind: 3)
+CsvOperator.create(name: 'lt', kind: 4)
+CsvOperator.create(name: 'lte', kind: 5)
+CsvOperator.create(name: 'rge', kind: 6)
+CsvOperator.create(name: 'diff', kind: 7)
+
+#Project
+Project.create(name: "Tamago")
+
+#CsvType
+CsvType.create(project_id: 1, name: "user")
+
+#CsvAttribute
+CsvAttribute.create(csv_type_id: 1, name: "previous_uid")
+CsvAttribute.create(csv_type_id: 1, name: "email")
+CsvAttribute.create(csv_type_id: 1, name: "imported_password")
+CsvAttribute.create(csv_type_id: 1, name: "family_name")
+CsvAttribute.create(csv_type_id: 1, name: "first_name")
+CsvAttribute.create(csv_type_id: 1, name: "family_name_kana")
+CsvAttribute.create(csv_type_id: 1, name: "first_name_kana")
+CsvAttribute.create(csv_type_id: 1, name: "corporate_name")
+CsvAttribute.create(csv_type_id: 1, name: "department")
+CsvAttribute.create(csv_type_id: 1, name: "zip_code")
+CsvAttribute.create(csv_type_id: 1, name: "state_name")
+CsvAttribute.create(csv_type_id: 1, name: "city")
+CsvAttribute.create(csv_type_id: 1, name: "address")
+CsvAttribute.create(csv_type_id: 1, name: "building_name")
+CsvAttribute.create(csv_type_id: 1, name: "tel")
+CsvAttribute.create(csv_type_id: 1, name: "is_campaign_accepted")
+CsvAttribute.create(csv_type_id: 1, name: "gender_shop_name")
+CsvAttribute.create(csv_type_id: 1, name: "birthday")
+CsvAttribute.create(csv_type_id: 1, name: "job_shop")
+CsvAttribute.create(csv_type_id: 1, name: "account_kind")
+CsvAttribute.create(csv_type_id: 1, name: "sub_email")
+CsvAttribute.create(csv_type_id: 1, name: "tag_names")
+CsvAttribute.create(csv_type_id: 1, name: "memo")
+CsvAttribute.create(csv_type_id: 1, name: "rank")
+CsvAttribute.create(csv_type_id: 1, name: "available_point")
+CsvAttribute.create(csv_type_id: 1, name:"point_scheduled_expired_on")
+CsvAttribute.create(csv_type_id: 1, name: "registered_at")
+CsvAttribute.create(csv_type_id: 1, name: "is_deleted")

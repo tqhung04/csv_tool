@@ -14,7 +14,10 @@ class CsvFiltersController < ApplicationController
 
   # GET /csv_filters/new
   def new
-    @csv_filter = CsvFilter.new
+    @project = Project.find params[:project_id]
+    @csv_type = @project.csv_types.find params[:csv_type_id]
+    @csv_attribute = @csv_type.csv_attributes.find params[:csv_attribute_id]
+    @csv_filter = @csv_attribute.csv_filters.new()
   end
 
   # GET /csv_filters/1/edit
@@ -25,10 +28,10 @@ class CsvFiltersController < ApplicationController
   # POST /csv_filters.json
   def create
     @csv_filter = CsvFilter.new(csv_filter_params)
-
+    binding.pry
     respond_to do |format|
       if @csv_filter.save
-        format.html { redirect_to @csv_filter, notice: 'Csv filter was successfully created.' }
+        format.html { redirect_to project_csv_type_csv_attribute_csv_filters_path(@csv_filter.csv_attribute.csv_type.project, @csv_filter.csv_attribute.csv_type, @csv_filter.csv_attribute), notice: 'Csv type was successfully created.' }
         format.json { render :show, status: :created, location: @csv_filter }
       else
         format.html { render :new }
@@ -56,7 +59,7 @@ class CsvFiltersController < ApplicationController
   def destroy
     @csv_filter.destroy
     respond_to do |format|
-      format.html { redirect_to csv_filters_url, notice: 'Csv filter was successfully destroyed.' }
+      format.html { redirect_to project_csv_type_csv_attribute_url, notice: 'Csv filter was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +72,6 @@ class CsvFiltersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def csv_filter_params
-      params.require(:csv_filter).permit(:name, :type)
+      params.require(:csv_filter).permit(:name, :csv_attribute_id, :before_value, :after_value, :compare_value, :csv_operator_id)
     end
 end

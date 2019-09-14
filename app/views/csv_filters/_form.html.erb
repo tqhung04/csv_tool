@@ -1,4 +1,4 @@
-<%= form_with(model: csv_filter, local: true) do |form| %>
+<%= form_for [@project, @csv_type, @csv_attribute, csv_filter], local: true do |form| %>
   <% if csv_filter.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(csv_filter.errors.count, "error") %> prohibited this csv_filter from being saved:</h2>
@@ -17,8 +17,23 @@
   </div>
 
   <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :type %>
+    <%= form.label :csv_operator_id %>
+    <%= form.select(:csv_operator_id, CsvOperator.all.collect {|u| [u.name, u.id]}) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :compare_value %>
+    <%= form.text_field :compare_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :after_value %>
+    <%= form.text_field :after_value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :csv_attribute_id %>
+    <%= form.hidden_field :csv_attribute_id %>
   </div>
 
   <div class="actions">

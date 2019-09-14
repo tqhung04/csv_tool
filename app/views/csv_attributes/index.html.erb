@@ -16,9 +16,10 @@
       <tr>
         <td><%= csv_attribute.name %></td>
         <td><%= csv_attribute.csv_type_id %></td>
-        <td><%= link_to 'Show', csv_attribute %></td>
-        <td><%= link_to 'Edit', edit_csv_attribute_path(csv_attribute) %></td>
-        <td><%= link_to 'Destroy', csv_attribute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', project_csv_type_csv_attributes_path %></td>
+        <td><%= link_to 'Edit', edit_project_csv_type_csv_attribute_path(csv_attribute.csv_type.project, csv_attribute.csv_type, csv_attribute) %></td>
+        <td><%= link_to 'Destroy', project_csv_type_csv_attribute_path(csv_attribute.csv_type.project, csv_attribute.csv_type, csv_attribute), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Filters' ,project_csv_type_csv_attribute_csv_filters_path(csv_attribute.csv_type.project, csv_attribute.csv_type, csv_attribute) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Csv Attribute', new_csv_attribute_path %>
+<%= link_to 'New Csv Attribute', new_project_csv_type_csv_attribute_path %>
