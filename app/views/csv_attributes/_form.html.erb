@@ -1,0 +1,27 @@
+<%= form_with(model: csv_attribute, local: true) do |form| %>
+  <% if csv_attribute.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(csv_attribute.errors.count, "error") %> prohibited this csv_attribute from being saved:</h2>
+
+      <ul>
+      <% csv_attribute.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :csv_type_id %>
+    <%= form.text_field :csv_type_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

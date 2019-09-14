@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @csv_filter.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @csv_filter.type %>
+</p>
+
+<%= link_to 'Edit', edit_csv_filter_path(@csv_filter) %> |
+<%= link_to 'Back', csv_filters_path %>

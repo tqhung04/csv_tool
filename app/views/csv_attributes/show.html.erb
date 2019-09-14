@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @csv_attribute.name %>
+</p>
+
+<p>
+  <strong>Csv type:</strong>
+  <%= @csv_attribute.csv_type_id %>
+</p>
+
+<%= link_to 'Edit', edit_csv_attribute_path(@csv_attribute) %> |
+<%= link_to 'Back', csv_attributes_path %>

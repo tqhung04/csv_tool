@@ -1,0 +1,2 @@
+class CsvFilter < ApplicationRecord
+end

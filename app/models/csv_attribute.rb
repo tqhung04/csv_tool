@@ -1,0 +1,2 @@
+class CsvAttribute < ApplicationRecord
+end
